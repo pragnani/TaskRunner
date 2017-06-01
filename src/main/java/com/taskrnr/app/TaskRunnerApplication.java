@@ -55,7 +55,7 @@ public class TaskRunnerApplication {
 	@Bean
 	public Step job1Step(String jobid) {
 
-		return stepBuilderFactory.get("step1").tasklet(new Tasklet() {
+		return stepBuilderFactory.get("job1Step").tasklet(new Tasklet() {
 			public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) {
 				log.info("{} step executed",jobid);
 				return null;
@@ -65,7 +65,7 @@ public class TaskRunnerApplication {
 	@Bean
 	public Step job2Step(String jobid) {
 
-		return stepBuilderFactory.get("step2").tasklet(new Tasklet() {
+		return stepBuilderFactory.get("job2Step").tasklet(new Tasklet() {
 			public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) {
 				log.info("{} step executed",jobid);
 				return null;
@@ -75,7 +75,7 @@ public class TaskRunnerApplication {
 	@Bean
 	public Step job3Step(String jobid) {
 
-		return stepBuilderFactory.get("step3").tasklet(new Tasklet() {
+		return stepBuilderFactory.get("job3Step").tasklet(new Tasklet() {
 			public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) {
 				log.info("{} step executed",jobid);
 				return null;
@@ -120,7 +120,7 @@ public class TaskRunnerApplication {
 	}
 	@Bean
 	public Job job3(Step job3Step) throws Exception {
-		return jobBuilderFactory.get("job2").incrementer(new RunIdIncrementer()).start(job3Step).build();
+		return jobBuilderFactory.get("job3").incrementer(new RunIdIncrementer()).start(job3Step).build();
 
 	}
 	protected JobRepository createJobRepository() throws Exception {
